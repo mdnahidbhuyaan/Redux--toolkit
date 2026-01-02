@@ -1,29 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const searchSlice = createSlice({
-    name:"search",
-    initialState:{
-        query:"",
-        activeTab:"",
-        result:[],
-        loading:false,
-        error:null
+  name: "search",
+  initialState: {
+    query: "",
+    activeTab: "",
+    results: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {
+    setQuery(state, action) {
+      state.query = action.payload;
     },
-    reducers:{
-        setQuery(state,action){
-
-        },
-        setActiveTab(state,action){
-
-        },
-             setLoading(state,action){
-            
-        },
-            setResult(state,action){
-            
-        },
-             setErron(state,action){
-            
-        }
+    setActiveTab(state, action) {
+      state.activeTab = action.payload;
+    },
+    setResults(state, action) {
+        state.results = action.payload;
+      state.loading = false;
+    },
+    setLoading(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+      state.loading = false;
+    },
+    clearResults(state){
+        state.results = [];
     }
-})
+  },
+});
+
+export const { setQuery, setActiveTab, setLoading, setResult, setError, clearResults } =
+  searchSlice.actions;
+
+export default searchSlice.reducer;
