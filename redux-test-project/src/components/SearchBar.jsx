@@ -14,10 +14,10 @@ const SearchBar = () => {
   return (
 
     
-    <div>
+    <div className="">
       <form onSubmit={(e)=>{
         submitHandler(e)
-      }} className="flex p-8 gap-5 bg-gray-500 px-10">
+      }} className="flex p-6 gap-5 bg-gray-800 shadow-lg px-10">
         <input
         value={text}
         onChange={(e)=>{
@@ -28,7 +28,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Search Anything..."
         />
-        <button className="active:scale-95 text-white  bg-cyan-400 cursor-pointer px-4 py-2 text-xl rounded-lg outline-none border-gray-300 border-2">
+        <button className="active:scale-95 text-white  bg-cyan-400 cursor-pointer px-4 py-2 text-xl rounded-sm outline-none">
           Search
         </button>
       </form>
