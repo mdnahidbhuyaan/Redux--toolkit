@@ -7,6 +7,8 @@ import {
   setResults,
 } from "../redux/features/searchSlich";
 import { useEffect } from "react";
+import ResultCart from "./ResultCart";
+
 const ResultGrid = () => {
   const dispatch = useDispatch();
 
@@ -62,10 +64,11 @@ const ResultGrid = () => {
   if (Loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-6 overflow-auto px-10">
       {results.map((item, idx) => {
         return <div key={idx}>
-          {item.title}
+          {/* {item.title} */}
+          <ResultCart item={item}/>
         </div>
       })}
     </div>

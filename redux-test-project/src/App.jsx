@@ -6,7 +6,7 @@ import ResultGrid from './components/ResultGrid'
 const App = () => {
 
   return (
-    <div className='h-screen w-full '>
+    <div className=' w-full min-h-screen'>
   <SearchBar/>
   <Tabs/>
   <ResultGrid/>
