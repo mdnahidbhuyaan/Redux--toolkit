@@ -21,6 +21,7 @@ const ResultGrid = () => {
     const getData = async () => {
       try {
         dispatch(setLoading());
+      
         let data = [];
         if (activeTab == "photo") {
           let response = await fetchPhotos(query);
@@ -30,6 +31,7 @@ const ResultGrid = () => {
             title: item.alt_description,
             thumbnail: item.urls.small,
             src: item.urls.full,
+            url:item.links.html
           }));
         }
         if (activeTab == "videos") {
@@ -40,16 +42,18 @@ const ResultGrid = () => {
             title: item.user.name || "video",
             thumbnail: item.image,
             src: item.video_files[0].link,
+            url:item.url
           }));
         }
         if (activeTab == "gif") {
           let response = await fetchGIF(query);
           data = response.results.map((item) => ({
             id: item.id,
-            type: "GIF",
+            type: "gif",
             title: item.title || "gif",
             thumbnail: item.media_formats.tinygif.url,
             src: item.media_formats.gif.url,
+            url:item.url
           }));
         }
         dispatch(setResults(data));
@@ -58,17 +62,18 @@ const ResultGrid = () => {
       }
     };
     getData();
-  }, [query, activeTab]);
+  }, [query, activeTab,dispatch]);
 
   if (error) return <h1>Error</h1>;
   if (Loading) return <h1>Loading...</h1>;
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 overflow-auto px-10">
+    <div className="flex flex-wrap justify-center gap-5 overflow-auto px-10">
       {results.map((item, idx) => {
         return <div key={idx}>
           {/* {item.title} */}
-          <ResultCart item={item}/>
+                      <ResultCart item={item}/>
+
         </div>
       })}
     </div>

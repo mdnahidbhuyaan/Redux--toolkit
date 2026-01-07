@@ -16,7 +16,7 @@ const Tabs = () => {
        
           <button
             key={idx}
-            className={`${(activeTab==elem?"bg-emerald-600":"bg-gray-600")} cursor-pointer active:scale-95  px-5 py-2 rounded uppercase text-white`}
+            className={`${(activeTab==elem?"bg-emerald-600":"bg-gray-800")} cursor-pointer active:scale-95  px-5 py-2 rounded uppercase text-white`}
             onClick={()=>{
                 dispatch(setActiveTab(elem))
             }}
